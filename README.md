@@ -10,9 +10,9 @@ The dataset is obtained from Lighthouse labs.
 Clone repo
 <https://github.com/SingarajuP/loan-predictions.git>
 
-Setup a virtual environment
-create a virtual environment for the project with python==3.10.9
+Setup a virtual environment\n
+create a virtual environment for the project with python==3.10.9\n
 Install all requirements using pip:
-pip install -r requirements.txt
-To run web application stay in the main directory and run the command:
-streamlit run app.py
+<pip install -r requirements.txt>
+To run web application stay in the main directory and run the command:\n
+<streamlit run app.py>
