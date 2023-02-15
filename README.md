@@ -12,7 +12,7 @@ Clone repo
 
 <br />Setup a virtual environment
 ```bash
-conda create -n yourenvname python==3.10.9
+conda create -n yourenvname python=3.10.9
 ```
 <br />Activate the virtual environment
 
