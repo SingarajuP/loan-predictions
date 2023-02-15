@@ -12,7 +12,7 @@ Clone repo
 
 <br />Setup a virtual environment
 ```bash
-<br />create a virtual environment for the project with python==3.10.9
+create a virtual environment for the project with python==3.10.9
 ```
 <br />Install all requirements using pip:
 ```bash
