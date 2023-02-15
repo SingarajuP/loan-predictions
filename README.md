@@ -6,3 +6,13 @@ To automate the loan eligibility process based on customer details that are prov
 #### Dataset
 The dataset is obtained from Lighthouse labs.
 
+#### Usage
+Clone repo
+
+
+Setup a virtual environment
+create a virtual environment for the project with python==3.10.9
+Install all requirements using pip:
+pip install -r requirements.txt
+To run web application stay in the main directory and run the command:
+streamlit run app.py
