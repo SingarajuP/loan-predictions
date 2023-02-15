@@ -7,12 +7,17 @@ To automate the loan eligibility process based on customer details that are prov
 The dataset is obtained from Lighthouse labs.
 
 #### Usage
-Clone repo
- [loan-predictions](https://github.com/SingarajuP/loan-predictions.git)
+Clone repo 
+ git clone https://github.com/SingarajuP/loan-predictions.git
 
 <br />Setup a virtual environment
 ```bash
 conda create -n yourenvname python==3.10.9
+```
+<br />Activate the virtual environment
+
+```bash
+conda activate yourenvname
 ```
 <br />Install all requirements using pip:
 ```bash
