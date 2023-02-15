@@ -8,7 +8,7 @@ The dataset is obtained from Lighthouse labs.
 
 #### Usage
 Clone repo
-<https://github.com/SingarajuP/loan-predictions.git>
+ [loan-predictions](https://github.com/SingarajuP/loan-predictions.git)
 
 <br />Setup a virtual environment
 <br />create a virtual environment for the project with python==3.10.9
