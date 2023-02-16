@@ -2,7 +2,7 @@ import streamlit as st
 import pickle
 import sys
 sys.path.append("src/")
-from src.pre_process import feature_process
+from src.predict import feature_process
 
 from src.predict import classify
 model = pickle.load(open("./models/lrc.pkl", "rb"))

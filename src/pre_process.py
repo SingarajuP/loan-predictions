@@ -1,23 +1,34 @@
 
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import LabelEncoder
 
-def feature_process(gen,mar,dep,edu,emp,total,loanamount,term,crehist,prop):
-    test=pd.DataFrame()
-   # test=pd.DataFrame({'gender':[data[0]],'maritalstatus':[data[1]],'Dependents':[data[2]],
-    #                   'education':[data[3]],'selfemployed':[data[4]],'log_income':[data[5]],
-   #                    'log_loanamt':[data[6]],'log_loanterm':[data[7]],'Credit_History':[data[8]],
-   #                    'area':[data[9]]})
-    test=pd.DataFrame({'gender':[gen],'maritalstatus':[mar],'Dependents':[dep],
-                       'education':[edu],'selfemployed':[emp],'log_income':[total],
-                       'log_loanamt':[loanamount],'log_loanterm':[term],'Credit_History':[crehist],
-                       'area':[prop]})
-    test.gender=test.gender.map({'Male':1,'Female':0})
-    test.maritalstatus=test.maritalstatus.map({'Yes':1,'No':0})
-    test.Dependents=test.Dependents.map({'0':0,'1':1,'2':2,'3':3,'3+':3})
-    test.education=test.education.map({'Graduate':0,'Not graduate':1})
-    test.selfemployed=test.selfemployed.map({'Yes':1,'No':0})
-    test.log_income=np.log(test.log_income)
-    test['log_loanamt']=np.log(test['log_loanamt'])
-    test.area=test.area.map({'Rural':0,'Semiurban':1,'Urban':2})
-    return test
+def cleaning(data):
+#Filling missing values
+    df=data
+    df.Dependents.fillna(df.Dependents.mode()[0],inplace=True)
+    df.Loan_Amount_Term.fillna(df.Loan_Amount_Term.mode()[0],inplace=True)
+    df.Gender.fillna(df.Gender.mode()[0],inplace=True)
+    df.Married.fillna(df.Married.mode()[0],inplace=True)
+    df.Self_Employed.fillna(df.Self_Employed.mode()[0],inplace=True)
+    df.LoanAmount.fillna(df.LoanAmount.median(),inplace=True)
+    df.loc[ (pd.isnull(df['Credit_History'])) & (df['Loan_Status'] == 'Y'), 'Credit_History'] = 1
+    df.loc[ (pd.isnull(df['Credit_History'])) & (df['Loan_Status'] == 'N'), 'Credit_History'] = 0
+
+#Encoding categories to numeric values
+    df['gender']=LabelEncoder().fit_transform(df.Gender)
+    df['maritalstatus']=LabelEncoder().fit_transform(df.Married)
+    df['education']=LabelEncoder().fit_transform(df.Education)
+    df['selfemployed']=LabelEncoder().fit_transform(df.Self_Employed)
+    df['area']=LabelEncoder().fit_transform(df.Property_Area)
+    df['loanstatus']=LabelEncoder().fit_transform(df.Loan_Status)
+    df["Dependents"].replace({"3+": "3"}, inplace=True)
+
+#Logarithmic values for higher numbers
+    df['log_income']=np.log(df['ApplicantIncome']+df['CoapplicantIncome'])
+    df['log_loanamt']=np.log(df.LoanAmount)
+    df['log_loanterm']=np.log(df.Loan_Amount_Term)
+
+#Dropping unwanted columns
+    data=df.drop(['Gender','Married','Education','Property_Area','Self_Employed','ApplicantIncome','CoapplicantIncome','LoanAmount','Loan_Status','Loan_Amount_Term'],axis=1)
+    return data
