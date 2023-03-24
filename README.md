@@ -1,4 +1,4 @@
-# loan-predictions
+# Loan eligibility predictions
 
 #### Problem Statement
 To automate the loan eligibility process based on customer details that are provided as online application forms are being filled. 
