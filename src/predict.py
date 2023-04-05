@@ -18,11 +18,13 @@ def feature_process(gen,mar,dep,edu,emp,total,loanamount,term,crehist,prop):
     test.selfemployed=test.selfemployed.map({'Yes':1,'No':0})
     test.log_income=np.log(test.log_income)
     test['log_loanamt']=np.log(test['log_loanamt'])
+    test['log_loanterm']=np.log(test['log_loanterm'])
     test.area=test.area.map({'Rural':0,'Semiurban':1,'Urban':2})
     return test
 
 def classify(data,model):
     label_decoder={0:'Loan will not be approved',1: 'Loan will be approved'}
     pred=model.predict(data)
-    return label_decoder.get(pred[0])
+    predi=label_decoder.get(pred[0])
+    return predi
     
