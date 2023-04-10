@@ -1,4 +1,5 @@
 # Loan eligibility predictions
+<br />The deployed app can be accessed in the link below.
 <br />[Automatic loan eligibility prediction](https://singarajup-loan-predictions-app-cgiq8u.streamlit.app/)
 #### Problem Statement
 To automate the loan eligibility process based on customer details that are provided as online application forms are being filled. 
